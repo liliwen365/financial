@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax登录页面</title>
+    <script src="/static/kpi/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $("#btnAjax").click(function () {
+                // 获取用户和密码,不能放在ajax请求中获取
+                username = $("#username").val(),
+                password = $("#password").val(),
+
+                $.ajax({
+                    "url": "/login_ajax",
+                    "type": "post",
+                    "data": {"username": username, "password": password},
+                    "dataType": "json",
+                }).success(function (data) {
+                    if (data.res == 0){
+                        $(".errormsg").show().html("用户名密码错误")
+                    }
+                    else{
+                            //跳转首页
+                            location.href = "/index"
+                        }
+                })
+            })
+        })
+    </script>
+    <style>
+        .errormsg{
+            display: none;
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+财务数据系统登录页面：<br>
+    {% csrf_token %}
+    <input type="text" name="username" id="username"> <br>
+    <input type="password" name="password" id="password"> <br>
+    <input type="button" value="ajax登录" id="btnAjax">
+    <div class="errormsg">
+        用户名密码错误kk
+    </div>
+</body>
+</html>

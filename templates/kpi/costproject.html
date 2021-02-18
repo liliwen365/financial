@@ -1,0 +1,32 @@
+{% extends "kpi/base.html" %}
+
+{% block b1 %}
+    <table class="table table-hover">
+        <tr>
+            <th class="left">分厂</th>
+            <th class="right">降本项目金额</th>
+            <th class="right">降本项目目标</th>
+            <th class="right">降本完成率</th>
+        </tr>
+        {% for i in content %}
+        <tr>
+            <th class="left">{{ i.dt }}</th>
+            <th class="right">{{ i.amount }}</th>
+            <th class="right">{{ i.scrapped }}</th>
+            <th class="right">{{ i.scrapped_amount }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock b1 %}
+
+{% block b2 %}
+    <form action="/costproject" method="post">
+{% endblock b2 %}
+
+{% block b3 %} }}
+    <li><a href="/index">产入产量数据</a></li>
+    <li><a href="/outcomedata">产出产量数据</a></li>
+    <li><a href="/scrapped">万元产值报废</a></li>
+    <li><a href="/entrust">委托加工数据</a></li>
+    <li class="active"><a href="/costproject">降成本项目</a></li>
+{% endblock b3 %}

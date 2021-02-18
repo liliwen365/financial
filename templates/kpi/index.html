@@ -1,0 +1,38 @@
+{% extends "kpi/base.html" %}
+
+{% block b2 %}
+    <form action="/nuclear_price" enctype="multipart/form-data" method="post">
+   {% csrf_token %}
+    <input type="file" name="pic">
+    <input type="submit" value="上传计算">
+    </form>
+{% endblock b2 %}
+
+{% block b1 %}
+
+    <table class="table table-hover">
+        <tr>
+            <th>成品码</th>
+            <th>系列</th>
+            <th>型号</th>
+            <th class="right">数量</th>
+            <th class="right">套餐价</th>
+            <th class="right">销售收入</th>
+        </tr>
+        {% for i in content %}
+            <tr>
+                <th>{{ i.0 }}</th>
+                <th>{{ i.2 }}</th>
+                <th>{{ i.3 }}</th>
+                <th class="right">{{ i.1 }}</th>
+                <th class="right">{{ i.4 }}</th>
+                <th class="right">{{ i.9 }}</th>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock b1 %}
+
+{% block b3 %}
+    <li class="active"><a href="/index">套餐评估</a></li>
+{% endblock b3 %}

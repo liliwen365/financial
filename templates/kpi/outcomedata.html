@@ -1,0 +1,38 @@
+{% extends "kpi/base.html" %}
+
+{% block b1 %}
+    <table class="table table-hover">
+        <tr>
+            <th>编码</th>
+            <th>仓库</th>
+            <th class="right">产出产量汇总</th>
+            <th class="right">账务口径成本价金额</th>
+            <th class="right">最新成本价金额</th>
+            <th class="right">销售价不含税金额(对内)</th>
+            <th class="right">销售价不含税金额(对外)</th>
+        </tr>
+        {% for i in content %}
+            <tr>
+                <th>{{ i.cod_number }}</th>
+                <th>{{ i.out_ware }}</th>
+                <th class="right">{{ i.quantity }}</th>
+                <th class="right">{{ i.amount }}</th>
+                <th class="right">{{ i.new_amount }}</th>
+                <th class="right">{{ i.not_tax_amount }}</th>
+                <th class="right">{{ i.bnot_tax_amount }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock b1 %}
+
+{% block b2 %}
+    <form action="/outcomedata" method="post">
+{% endblock b2 %}
+
+{% block b3 %} }}
+<li><a href="/index">产入产量数据</a></li>
+<li class="active"><a href="/outcomedata">产出产量数据</a></li>
+<li><a href="/scrapped">万元产值报废</a></li>
+<li><a href="/entrust">委托加工数据</a></li>
+<li><a href="/costproject">降成本项目</a></li>
+{% endblock b3 %}

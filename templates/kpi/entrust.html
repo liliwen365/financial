@@ -1,0 +1,38 @@
+{% extends "kpi/base.html" %}
+
+{% block b1 %}
+    <table class="table table-hover">
+        <tr>
+            <th>专业</th>
+            <th>物料编码</th>
+            <th>物料名称</th>
+            <th>类型说明</th>
+            <th class="right">产量</th>
+            <th class="right">委托加工产量</th>
+        </tr>
+        {% for i in content %}
+        <tr>
+            <th>{{ i.profession }}</th>
+            <th>{{ i.cod_number }}</th>
+            <th>{{ i.name }}</th>
+            <th>{{ i.description }}</th>
+            <th class="right">{{ i.quantity }}</th>
+            <th class="right">{{ i.entruquantity }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock b1 %}
+
+{% block b2 %}
+    <form action="/entrust" method="post">
+{% endblock b2 %}
+
+{% block b3 %} }}
+    <li><a href="/index">产入产量数据</a></li>
+    <li><a href="/outcomedata">产出产量数据</a></li>
+    <li><a href="/scrapped">万元产值报废</a></li>
+    <li class="active"><a href="/entrust">委托加工数据</a></li>
+    <li><a href="/costproject">降成本项目</a></li>
+{% endblock b3 %}
+
+

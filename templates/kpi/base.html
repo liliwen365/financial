@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页 - 财务数据查询系统 V5.87</title>
+    <link href="/static/kpi/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/kpi/js/jquery-1.12.4.min.js"></script>
+    <script src="/static/kpi/js/bootstrap.min.js"></script>
+    <style>
+        .table>tbody>tr>th.left,
+        .table>tbody>tr>td.left {
+        padding: 8px;
+        line-height: 1.428571;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+        text-align: left;
+        }
+    </style>
+    {% block b4 %} <script></script> {% endblock b4 %}
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-static-top ">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#mymenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">财务数据系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mymenu">
+            <ul class="nav navbar-nav">
+                {% block b3 %}
+                <li class="active"><a href="/index">产入产量数据</a></li>
+                <li><a href="/outcomedata">产出产量数据</a></li>
+                <li><a href="/scrapped">万元产值报废</a></li>
+                <li><a href="/entrust">委托加工数据</a></li>
+                <li><a href="/costproject">降成本项目</a></li>
+                {% endblock b3 %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+    <div class="container-fluid">
+        <table class="table table-hover">
+            <div class="input-group">
+                {% block b2 %}
+                    <form action="/index" method="post">
+                        <span class="input-group-addon">日期：</span>
+                        <input id="note_info" name="date1" type="text" class="date-picker hasDatepicker"
+                               value={{ date1 }}>
+                        &nbsp;&nbsp;至&nbsp;&nbsp;
+                        <input id="note_info1" name="date2" type="text" class="date-picker hasDatepicker"
+                               value={{ date2 }}>&nbsp;&nbsp;
+                        <input type="submit" class="new_style_button" value="查询" id="update">
+                    </form>
+                {% endblock b2 %}
+
+            </div>
+            {% block b1 %} }}
+                <table class="table table-hover">
+                    <tr>
+                        <th>仓库</th>
+                        <th>产量</th>
+                        <th>成本价金额</th>
+                    </tr>
+                    {#        {%content%}       #}
+                </table>
+            {% endblock b1 %}
+    </div>
+</div>
+<!--<script src="/js/bootstrap.min.js"></script>-->
+</body>
+</html>
